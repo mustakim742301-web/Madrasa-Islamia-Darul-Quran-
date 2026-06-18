@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>মাদ্রাসা ইসলামিয়া দারুল কোরআন</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green-dark:#1a3d2b; --green-mid:#2d6a4f; --green-light:#40916c; --gold:#c9a84c; --gold-light:#f0d080; --cream:#fdf8ee; --text-dark:#1a1a1a; --text-mid:#444; --white:#ffffff; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--cream); color: var(--text-dark); }
+    nav { background: var(--green-dark); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+    .nav-logo { color: var(--gold); font-family: 'Amiri', serif; font-size: 1.3rem; padding: 14px 0; }
+    .nav-links { display: flex; }
+    .nav-links a { color: #cde8d8; text-decoration: none; padding: 18px 16px; font-size: 0.9rem; transition: background .2s, color .2s; }
+    .nav-links a:hover { background: var(--green-mid); color: var(--gold-light); }
+    .hero { background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 60%, #52b788 100%); color: var(--white); text-align: center; padding: 80px 5% 90px; position: relative; overflow: hidden; }
+    .hero::before { content: '☽'; position: absolute; top: -30px; right: 5%; font-size: 260px; opacity: .05; line-height: 1; pointer-events: none; }
+    .hero-arabic { font-family: 'Amiri', serif; font-size: clamp(1.6rem,5vw,2.8rem); color: var(--gold-light); letter-spacing: .05em; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(1.8rem,6vw,3.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 12px; }
+    .hero-sub { font-size: 1rem; color: #b7dfc9; margin-bottom: 36px; }
+    .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 50px; padding: 8px 20px; font-size: .85rem; color: var(--gold-light); }
+    section { padding: 70px 5%; }
+    .section-title { text-align: center; font-family: 'Amiri', serif; font-size: clamp(1.5rem,4vw,2.2rem); color: var(--green-dark); margin-bottom: 8px; }
+    .section-line { width: 60px; height: 3px; background: var(--gold); margin: 0 auto 40px; border-radius: 2px; }
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 28px; margin-top: 10px; }
+    .about-card { background: var(--cream); border-left: 4px solid var(--green-light); border-radius: 8px; padding: 24px 22px; }
+    .about-card h3 { color: var(--green-dark); margin-bottom: 8px; font-size: 1.05rem; }
+    .about-card p { color: var(--text-mid); font-size: .92rem; line-height: 1.7; }
+    #courses { background: var(--cream); }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 22px; }
+    .course-card { background: var(--white); border-radius: 12px; padding: 30px 22px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.07); transition: transform .2s,box-shadow .2s; }
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .course-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .course-card h3 { color: var(--green-dark); font-size: 1rem; margin-bottom: 8px; }
+    .course-card p { color: var(--text-mid); font-size: .85rem; line-height: 1.6; }
+    #admission { background: var(--green-dark); color: var(--white); }
+    #admission .section-title { color: var(--gold-light); }
+    .admission-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 24px; }
+    .adm-box { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 26px 22px; }
+    .adm-box h3 { color: var(--gold); margin-bottom: 10px; font-size: 1rem; }
+    .adm-box ul { padding-left: 18px; }
+    .adm-box li { color: #c8e6d4; font-size: .88rem; line-height: 1.9; }
+    #teachers { background: var(--white); }
+    .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 22px; }
+    .teacher-card { text-align: center; background: var(--cream); border-radius: 12px; padding: 30px 18px 22px; }
+    .teacher-avatar { width: 80px; height: 80px; background: var(--green-mid); border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--white); overflow: hidden; }
+    .teacher-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .teacher-card h3 { color: var(--green-dark); font-size: .98rem; margin-bottom: 4px; }
+    .teacher-card p { color: var(--text-mid); font-size: .82rem; }
+    #gallery { background: var(--cream); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 14px; }
+    .gallery-item { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    #notice { background: var(--white); }
+    .notice-list { max-width: 720px; margin: 0 auto; }
+    .notice-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid #e8e0d0; }
+    .notice-date { min-width: 70px; background: var(--green-dark); color: var(--gold); border-radius: 8px; text-align: center; padding: 8px 6px; font-size: .78rem; line-height: 1.4; }
+    .notice-text h4 { color: var(--green-dark); font-size: .95rem; margin-bottom: 4px; }
+    .notice-text p { color: var(--text-mid); font-size: .85rem; line-height: 1.6; }
+    #contact { background: var(--green-dark); color: var(--white); }
+    #contact .section-title { color: var(--gold-light); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 24px; max-width: 860px; margin: 0 auto; }
+    .contact-box { background: rgba(255,255,255,.08); border-radius: 10px; padding: 24px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .contact-icon { font-size: 1.6rem; }
+    .contact-box h3 { color: var(--gold); font-size: .9rem; margin-bottom: 4px; }
+    .contact-box p { color: #c0dece; font-size: .88rem; line-height: 1.6; }
+    footer { background: #0e2419; color: #7aaa8a; text-align: center; padding: 24px 5%; font-size: .82rem; }
+    footer span { color: var(--gold); }
+    @media (max-width:600px) { .nav-links { display: none; } .hero { padding: 60px 5% 70px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🕌 দারুল কোরআন</div>
+  <div class="nav-links">
+    <a href="#about">পরিচয়</a>
+    <a href="#courses">বিভাগ</a>
+    <a href="#admission">ভর্তি</a>
+    <a href="#teachers">শিক্ষকমণ্ডলী</a>
+    <a href="#notice">নোটিশ</a>
+    <a href="#contact">যোগাযোগ</a>
+    <a href="admission.html" style="background:var(--gold);color:var(--green-dark);font-weight:600;">ভর্তি ফর্ম</a>
+    <a href="complaint.html">অভিযোগ/আবেদন</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <h1>মাদ্রাসা ইসলামিয়া<br>দারুল কোরআন</h1>
+  <p class="hero-sub">আমলাই মাঝপাড়া • পিন: 742301</p>
+  <div class="hero-badges">
+    <span class="badge">📖 কোরআন শিক্ষা</span>
+    <span class="badge">🕌 ইসলামিক শিক্ষা</span>
+    <span class="badge">🎓 আলিম কোর্স</span>
+  </div>
+  <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="admission.html" style="display:inline-block;background:var(--gold);color:var(--green-dark);text-decoration:none;font-weight:700;padding:12px 28px;border-radius:50px;font-size:.92rem;">📝 ভর্তি ফর্ম</a>
+    <a href="complaint.html" style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid var(--gold-light);color:var(--white);text-decoration:none;font-weight:600;padding:12px 28px;border-radius:50px;font-size:.92rem;">✍️ অভিযোগ/আবেদন</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">প্রতিষ্ঠান পরিচয়</h2>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>🏫 আমাদের সম্পর্কে</h3>
+      <p>মাদ্রাসা ইসলামিয়া দারুল কোরআন একটি ঐতিহ্যবাহী ইসলামিক শিক্ষা প্রতিষ্ঠান। এখানে পবিত্র কোরআন হিফজ, নাজেরা এবং ইসলামিক জ্ঞানের শিক্ষা প্রদান করা হয়।</p>
+    </div>
+    <div class="about-card">
+      <h3>🎯 আমাদের লক্ষ্য</h3>
+      <p>শিক্ষার্থীদের কোরআন ও সুন্নাহর আলোকে নৈতিক, ধার্মিক এবং আদর্শ মানুষ হিসেবে গড়ে তোলা আমাদের মূল লক্ষ্য।</p>
+    </div>
+    <div class="about-card">
+      <h3>🌟 বিশেষত্ব</h3>
+      <p>অভিজ্ঞ শিক্ষকমণ্ডলী, সুশৃঙ্খল পরিবেশ এবং ব্যক্তিগত মনোযোগের মাধ্যমে প্রতিটি শিক্ষার্থীর সর্বোচ্চ বিকাশ নিশ্চিত করা হয়।</p>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <h2 class="section-title">বিভাগ ও কোর্সসমূহ</h2>
+  <div class="section-line"></div>
+  <div class="courses-grid">
+    <div class="course-card"><div class="course-icon">📖</div><h3>হিফজুল কোরআন</h3><p>সম্পূর্ণ কোরআন মুখস্থ করার বিশেষ প্রোগ্রাম। অভিজ্ঞ হাফেজ শিক্ষকের তত্ত্বাবধানে পরিচালিত।</p></div>
+    <div class="course-card"><div class="course-icon">🔤</div><h3>নাজেরা কোরআন</h3><p>শুদ্ধ তেলাওয়াত ও তাজওয়িদ শিক্ষা। শিশু থেকে বয়স্ক সকলের জন্য।</p></div>
+    <div class="course-card"><div class="course-icon">📚</div><h3>ইবতেদায়ি স্তর</h3><p>প্রাথমিক ইসলামিক শিক্ষা, আরবি ভাষা, ও ধর্মীয় জ্ঞানের ভিত্তি গঠন।</p></div>
+    <div class="course-card"><div class="course-icon">🎓</div><h3>দাওরায়ে হাদিস</h3><p>হাদিস, ফিকহ ও উচ্চতর ইসলামিক জ্ঞান অর্জনের সর্বোচ্চ স্তর।</p></div>
+    <div class="course-card"><div class="course-icon">🌙</div><h3>তাফসির বিভাগ</h3><p>কোরআনের তাফসির ও ব্যাখ্যা সম্পর্কিত বিশেষ কোর্স।</p></div>
+    <div class="course-card"><div class="course-icon">✋</div><h3>মক্তব বিভাগ</h3><p>শিশুদের জন্য প্রাথমিক কোরআন ও নামাজ শিক্ষার বিশেষ ব্যবস্থা।</p></div>
+  </div>
+</section>
+
+<section id="admission">
+  <h2 class="section-title">ভর্তি তথ্য</h2>
+  <div class="section-line"></div>
+  <div class="admission-grid">
+    <div class="adm-box"><h3>📋 ভর্তির যোগ্যতা</h3><ul><li>বয়স ৫ বছর বা তার বেশি</li><li>মুসলিম শিক্ষার্থী</li><li>অভিভাবকের সম্মতিপত্র</li><li>পূর্বের সনদপত্র (প্রযোজ্য ক্ষেত্রে)</li></ul></div>
+    <div class="adm-box"><h3>📄 প্রয়োজনীয় কাগজপত্র</h3><ul><li>জন্ম নিবন্ধন সনদ</li><li>পাসপোর্ট সাইজের ছবি (২ কপি)</li><li>অভিভাবকের জাতীয় পরিচয়পত্র</li><li>পূর্ববর্তী প্রতিষ্ঠানের ছাড়পত্র</li></ul></div>
+    <div class="adm-box"><h3>🗓️ ভর্তির সময়</h3><ul><li>সারা বছর ভর্তি চলে</li><li>মূল ভর্তি: মহররম মাসে</li><li>সকাল ৯টা – বিকাল ৪টা</li><li>শুক্রবার বন্ধ</li></ul></div>
+    <div class="adm-box"><h3>💰 বেতন ও সুবিধা</h3><ul><li>বেতন: অত্যন্ত সাশ্রয়ী</li><li>গরিব মেধাবী শিক্ষার্থীদের বৃত্তি</li><li>আবাসিক সুবিধা আছে</li><li>বিনামূল্যে কিতাব সরবরাহ</li></ul></div>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="admission.html" style="display:inline-block;background:var(--gold);color:var(--green-dark);text-decoration:none;font-weight:700;padding:14px 36px;border-radius:50px;font-size:1rem;">📝 অনলাইনে ভর্তি ফর্ম পূরণ করুন</a>
+  </div>
+</section>
+
+<section id="teachers">
+  <h2 class="section-title">শিক্ষকমণ্ডলী</h2>
+  <div class="section-line"></div>
+  <div class="teachers-grid">
+    <div class="teacher-card">
+      <div class="teacher-avatar"><img src="https://i.postimg.cc/FK9VCJKW/Screenshot-20260522-090027.jpg"></div>
+      <h3>হাফেজ রফিকুল ইসলাম</h3>
+      <p>প্রধান মুহতামিম<br>দাওরায়ে হাদিস</p>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar"><img src="https://i.postimg.cc/LsKLGg8F/Screenshot-20260616-081516.jpg"></div>
+      <h3>হাফেজ আব্দুর রহিম</h3>
+      <p>হিফজ বিভাগ প্রধান<br>তাজওয়িদ বিশেষজ্ঞ</p>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar">👳</div>
+      <h3>মাস্টার মিনার জুম্মা</h3>
+      <p>জেনারেল বিভাগ<br>বাংলা ইংরেজি শিক্ষক</p>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar">👳</div>
+      <h3>হাফেজ নাসিম সেখ</h3>
+      <p>পরিচালনা সহকারী<br>রক্ষণাবেক্ষণ বিভাগ</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2 class="section-title">ফটো গ্যালারি</h2>
+  <div class="section-line"></div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://i.postimg.cc/V6TZJQy7/IMG-20260126-075726.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/V6TZJQyX/IMG-20260126-075735.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/NMLPGGnL/Screenshot-20260127-183920.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/br4XfSNr/IMG-20260126-080140.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/L4NpvhtV/Screenshot-20260127-183920.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/3JGWqgtY/Screenshot-20260522-233322.jpg"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/RZM9Tf83/IMG-20260615-165049.png"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/4N1jX341/IMG-20260615-171849.png"></div>
+  </div>
+</section>
+
+<section id="notice">
+  <h2 class="section-title">নোটিশ বোর্ড</h2>
+  <div class="section-line"></div>
+  <div class="notice-list">
+    <div class="notice-item">
+      <div class="notice-date">জুন<br>২০২৬</div>
+      <div class="notice-text"><h4>বার্ষিক পরীক্ষার সময়সূচি প্রকাশ</h4><p>আসন্ন বার্ষিক পরীক্ষার সময়সূচি প্রকাশিত হয়েছে। সকল শিক্ষার্থীদের মনোযোগ দিয়ে পড়াশোনা করতে অনুরোধ করা হচ্ছে।</p></div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-date">মে<br>২০২৬</div>
+      <div class="notice-text"><h4>নতুন শিক্ষার্থী ভর্তি চলছে</h4><p>হিফজ, নাজেরা ও ইবতেদায়ি বিভাগে নতুন শিক্ষার্থী ভর্তি চলছে। আগ্রহীরা যোগাযোগ করুন।</p></div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-date">এপ্রিল<br>২০২৬</div>
+      <div class="notice-text"><h4>বাৎসরিক হিসাব উপলক্ষে বিশেষ সভার আয়োজন</h4><p>কমিটির সকল সদস্যবৃন্দকে যথাসময়ে উপস্থিত থাকার জন্য অনুরোধ করা হলো।</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">যোগাযোগ করুন</h2>
+  <div class="section-line"></div>
+  <div class="contact-grid">
+    <div class="contact-box">
+      <div class="contact-icon">📍</div>
+      <div><h3>ঠিকানা</h3><p>আমলাই মাঝপাড়া<br>ভরতপুর, মুর্শিদাবাদ<br>পশ্চিমবঙ্গ, ভারত<br>পিন কোড: ৭৪২৩০১</p></div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-icon">📞</div>
+      <div><h3>ফোন</h3><p>9933861890</p></div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-icon">⏰</div>
+      <div><h3>অফিস সময়</h3><p>শনি – বৃহস্পতি<br>সকাল ৬টা – বিকাল ৪টা</p></div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-icon">🕌</div>
+      <div><h3>নামাজ ও খাবার</h3><p>পাঁচ ওয়াক্ত নামাজ জামাতের সাথে আদায় হয়।<br>প্রতিদিন নিয়মিত তিন বেলা খাবার প্রদান করা হয়।</p></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="complaint.html" style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid var(--gold);color:var(--gold-light);text-decoration:none;font-weight:600;padding:13px 32px;border-radius:50px;font-size:.95rem;">✍️ অভিযোগ বা আবেদন জমা দিন</a>
+  </div>
+</section>
+
+<footer>
+  <p>© ২০২৬ <span>মাদ্রাসা ইসলামিয়া দারুল কোরআন</span> — আমলাই মাঝপাড়া</p>
+  <p style="margin-top:6px;">সকল অধিকার সংরক্ষিত</p>
+</footer>
+
+</body>
+</html>

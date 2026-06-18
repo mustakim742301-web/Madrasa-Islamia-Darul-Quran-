@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>অভিযোগ / আবেদন ফর্ম — মাদ্রাসা ইসলামিয়া দারুল কোরআন</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green-dark:#1a3d2b; --green-mid:#2d6a4f; --green-light:#40916c; --gold:#c9a84c; --gold-light:#f0d080; --cream:#fdf8ee; --text-dark:#1a1a1a; --text-mid:#444; --white:#ffffff; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--cream); color: var(--text-dark); }
+    nav { background: var(--green-dark); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+    .nav-logo { color: var(--gold); font-family: 'Amiri', serif; font-size: 1.3rem; padding: 14px 0; text-decoration: none; }
+    .nav-back { color: #cde8d8; text-decoration: none; padding: 18px 16px; font-size: 0.9rem; }
+    .nav-back:hover { color: var(--gold-light); }
+
+    .form-hero { background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 60%, #52b788 100%); color: var(--white); text-align: center; padding: 50px 5% 60px; }
+    .form-hero h1 { font-size: clamp(1.5rem,5vw,2.4rem); font-weight: 700; margin-bottom: 8px; }
+    .form-hero p { color: #b7dfc9; font-size: 0.95rem; }
+
+    .form-wrap { max-width: 680px; margin: -30px auto 60px; padding: 0 5%; }
+    form { background: var(--white); border-radius: 14px; padding: 36px 28px; box-shadow: 0 8px 30px rgba(0,0,0,.12); }
+    fieldset { border: none; margin-bottom: 28px; }
+    fieldset legend { font-family: 'Amiri', serif; color: var(--green-dark); font-size: 1.15rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); width: 100%; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: .88rem; color: var(--text-mid); margin-bottom: 6px; font-weight: 500; }
+    .field label .req { color: #c0392b; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 14px; border: 1.5px solid #ddd5c0; border-radius: 8px;
+      font-family: inherit; font-size: .95rem; background: var(--cream); color: var(--text-dark);
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--green-light); background: var(--white); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width:520px) { .field-row { grid-template-columns: 1fr; } }
+    textarea { resize: vertical; min-height: 110px; }
+
+    .submit-btn {
+      width: 100%; background: var(--green-dark); color: var(--white); border: none; border-radius: 8px;
+      padding: 15px; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: background .2s; font-family: inherit;
+    }
+    .submit-btn:hover { background: var(--green-mid); }
+    .submit-btn:disabled { background: #999; cursor: not-allowed; }
+
+    .status-msg { text-align: center; padding: 16px; border-radius: 8px; margin-top: 16px; font-size: .92rem; display: none; }
+    .status-msg.success { background: #d4edda; color: #155724; display: block; }
+    .status-msg.error { background: #f8d7da; color: #721c24; display: block; }
+
+    footer { background: #0e2419; color: #7aaa8a; text-align: center; padding: 24px 5%; font-size: .82rem; }
+    footer span { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🕌 দারুল কোরআন</a>
+  <a href="index.html" class="nav-back">← মূল পেজে ফিরুন</a>
+</nav>
+
+<div class="form-hero">
+  <h1>অভিযোগ / আবেদন ফর্ম</h1>
+  <p>মাদ্রাসা ইসলামিয়া দারুল কোরআন — আপনার অভিযোগ বা আবেদন জানান</p>
+</div>
+
+<div class="form-wrap">
+  <form id="complaintForm" action="https://formspree.io/f/xkoaalwg" method="POST">
+    <input type="hidden" name="_subject" value="নতুন অভিযোগ/আবেদন - দারুল কোরআন">
+
+    <fieldset>
+      <legend>আবেদনকারীর তথ্য</legend>
+      <div class="field">
+        <label>পূর্ণ নাম <span class="req">*</span></label>
+        <input type="text" name="নাম" required>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>ফোন নম্বর <span class="req">*</span></label>
+          <input type="tel" name="ফোন_নম্বর" required>
+        </div>
+        <div class="field">
+          <label>ইমেইল (যদি থাকে)</label>
+          <input type="email" name="ইমেইল">
+        </div>
+      </div>
+      <div class="field">
+        <label>আপনি কার সাথে সম্পর্কিত <span class="req">*</span></label>
+        <select name="সম্পর্ক" required>
+          <option value="">নির্বাচন করুন</option>
+          <option value="শিক্ষার্থী">শিক্ষার্থী</option>
+          <option value="অভিভাবক">অভিভাবক</option>
+          <option value="শিক্ষক/কর্মচারী">শিক্ষক/কর্মচারী</option>
+          <option value="অন্যান্য">অন্যান্য</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>বিষয়</legend>
+      <div class="field">
+        <label>আবেদনের ধরন <span class="req">*</span></label>
+        <select name="আবেদনের_ধরন" required>
+          <option value="">নির্বাচন করুন</option>
+          <option value="অভিযোগ">অভিযোগ</option>
+          <option value="সাধারণ আবেদন">সাধারণ আবেদন</option>
+          <option value="ছুটির আবেদন">ছুটির আবেদন</option>
+          <option value="পরামর্শ">পরামর্শ</option>
+          <option value="অন্যান্য">অন্যান্য</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>বিষয়/শিরোনাম <span class="req">*</span></label>
+        <input type="text" name="বিষয়" required>
+      </div>
+      <div class="field">
+        <label>বিস্তারিত বর্ণনা <span class="req">*</span></label>
+        <textarea name="বিস্তারিত_বর্ণনা" required></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="submit-btn">জমা দিন</button>
+    <div id="statusMsg" class="status-msg"></div>
+  </form>
+</div>
+
+<footer>
+  <p>© ২০২৬ <span>মাদ্রাসা ইসলামিয়া দারুল কোরআন</span> — আমলাই মাঝপাড়া</p>
+</footer>
+
+<script>
+  const form = document.getElementById('complaintForm');
+  const statusMsg = document.getElementById('statusMsg');
+  const btn = form.querySelector('.submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'জমা হচ্ছে...';
+    statusMsg.className = 'status-msg';
+    statusMsg.textContent = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        statusMsg.className = 'status-msg success';
+        statusMsg.textContent = '✅ আপনার আবেদন সফলভাবে জমা হয়েছে। কর্তৃপক্ষ যথাসময়ে বিবেচনা করবে।';
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      statusMsg.className = 'status-msg error';
+      statusMsg.textContent = '❌ জমা দিতে সমস্যা হয়েছে। আবার চেষ্টা করুন বা ফোনে যোগাযোগ করুন।';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'জমা দিন';
+    }
+  });
+</script>
+
+</body>
+</html>
